@@ -79,14 +79,21 @@
     @endif
     <h2>コメント</h2>
     <form action="/threads" method="POST">
+    <input type="hidden" name="category_id" value="{{ $category_id }}">
         <br>
         <tr>
+            <th>名前</th>
+            <td class="comment-name">
+                <input name="name" id="category-name" class="form-textarea"></textarea>
+            </td>
+            <br>
             <th>コメント:</th>
             <td class="comment-body">
                 <textarea name="comment" rows="4" cols="40"></textarea>
             </td>
         </tr>
         {{ csrf_field() }}
+        <br>
         <br><button class="btn btn-submit"> コメント </button>
     </form>
     <button type="button" onClick="history.back()" class="back-button">戻る</button>
