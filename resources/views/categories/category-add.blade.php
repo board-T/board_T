@@ -33,7 +33,8 @@
 
                     <input class="form-submit" type="submit" value="作成" />
                     <br>
-                    <button type="button" onClick="history.back()" class="back-button">戻る</button>
+                    <a href="/category"><button type="button" class="back-button">一覧画面へ戻る</button></a>
+
                 </form>
             </div>
             @csrf

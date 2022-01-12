@@ -96,8 +96,7 @@
         <br>
         <br><button class="btn btn-submit"> コメント </button>
     </form>
-    <button type="button" onClick="history.back()" class="back-button">戻る</button>
-
+    <a href="/category"><button type="button" class="back-button">一覧画面へ戻る</button></a>
 
  @endsection
 
