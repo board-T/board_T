@@ -21,7 +21,7 @@ class UsersController extends Controller
     public function mypage(Request $request)
     {
 
-        // $users = Auth::user('id', $request["id"]);
+        // $users = Auth::id();
         $users = User::where('id', $request["id"])
         ->first();
 
