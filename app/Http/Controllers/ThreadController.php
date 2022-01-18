@@ -13,6 +13,8 @@ class ThreadController extends Controller
     // Indexページの表示
     public function index(Request $request)
     {
+        $users = Auth::id();
+
         $category = Category::find($request->id); 
         $comments = $category->comments()->get(); 
 
@@ -20,13 +22,17 @@ class ThreadController extends Controller
         return view('threads.index',[
             'category_id'=>$request->id,
             'category'=>$category,
-            'comments'=>$comments
+            'comments'=>$comments,
+            'users' => $users,
+
         ]);
     }
 
     // 投稿された内容を表示するページ
     public function create(Request $request)
     {
+        $users = Auth::id();
+
         // バリデーションチェック
         $request->validate([
             'name' => 'required|max:10',
@@ -39,7 +45,9 @@ class ThreadController extends Controller
         Comment::create([
             'user_id' => Auth::id(),
             'category_id' => $request->category_id,
-            'comment' => $comment
+            'comment' => $comment,
+            'users' => $users,
+
         ]);
 
         return redirect()->route('threads', ['id' => $request->category_id]);
