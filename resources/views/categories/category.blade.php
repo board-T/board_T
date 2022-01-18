@@ -46,4 +46,10 @@
             新しい部屋の作成
         </a>
     </div>
+    <div class="mt-4 mb-4">
+        <a href="{{ route('mypage',['id' => $users ]) }}" class="btn btn-primary">
+            マイページ
+        </a>
+    </div>
+
 @endsection

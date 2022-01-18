@@ -20,9 +20,14 @@ class CategoryController extends Controller
     //投稿画面一覧
     public function category(Request $request)
     {
+        $users = Auth::id();
+        // var_dump(Auth::user()->id);
+        // $users = Auth::user('id', $request["id"]);
+
         $categories = Category::all();
         return view('categories.category', [
             'categories' => $categories,
+            'users' => $users,
         ]);
     }
 
