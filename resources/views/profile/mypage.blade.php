@@ -15,7 +15,7 @@
                 <div class="profile">{{ $users->profile }}</div>
 
             <a href="/edit?id={{ $users->id }}">
-                <img src="../storage/images/edit.png" alt="" >
+                <img src="../../images/edit.png" alt="" >
             </a>
 
         </div>
