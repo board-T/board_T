@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 
+use Illuminate\Pagination\Paginator;
+
 class CategoryController extends Controller
 {
 
@@ -18,11 +20,11 @@ class CategoryController extends Controller
     }
 
     //投稿画面一覧
-    public function category(Request $request)
+    public function category()
     {
         $users = Auth::id();
 
-        $categories = Category::all();
+        $categories = Category::paginate(5); //ページネーションの設定
         return view('categories.category', [
             'categories' => $categories,
             'users' => $users,
@@ -53,14 +55,8 @@ class CategoryController extends Controller
         $category->name = $request['name'];
         $category->comment = $request['comment'];
         $category->save();
-        $categories = Category::all();
         
-        return view('categories.category', [
-            'categories' => $categories,
-            'users' => $users,
-
-        ]);
+        return redirect('/category');
     }
-
 
 }
