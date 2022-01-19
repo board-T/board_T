@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('content')
 @if (count($categories) > 0)
 
@@ -46,10 +46,4 @@
             新しい部屋の作成
         </a>
     </div>
-    <div class="mt-4 mb-4">
-        <a href="{{ route('mypage',['id' => $users ]) }}" class="btn btn-primary">
-            マイページ
-        </a>
-    </div>
-
 @endsection

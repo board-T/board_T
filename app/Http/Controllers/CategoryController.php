@@ -21,8 +21,6 @@ class CategoryController extends Controller
     public function category(Request $request)
     {
         $users = Auth::id();
-        // var_dump(Auth::user()->id);
-        // $users = Auth::user('id', $request["id"]);
 
         $categories = Category::all();
         return view('categories.category', [
@@ -35,9 +33,12 @@ class CategoryController extends Controller
 
     public function category_add(Request $request)
     {
+        $users = Auth::id();
+
         $categories = Category::all();
         return view('categories.category-add', [
             'categories' => $categories,
+            'users' => $users,
         ]);
     }
 
@@ -45,6 +46,8 @@ class CategoryController extends Controller
     
     public function add(Request $request)
     {
+        $users = Auth::id();
+
         $category = new Category;
         // $category->id = $request['id'];
         $category->name = $request['name'];
@@ -54,6 +57,8 @@ class CategoryController extends Controller
         
         return view('categories.category', [
             'categories' => $categories,
+            'users' => $users,
+
         ]);
     }
 
