@@ -19,27 +19,8 @@
 
     @endforeach
 
+    {{ $categories->links() }}
 
-    <nav>
-        <ul>
-            <li class="page_t">
-                <a href="" class="li_box"><<</a>
-            </li>
-            <li class="page">
-                <a href="" class="li_box"><</a>
-            </li>
-            <li>
-                <span class="li_box">1</span>
-            </li>
-            <li class="page">
-                <a href="" class="li_box">></a>
-            </li>
-            <li class="page_e">
-                <a href="" class="li_box">>></a>
-            </li>
-
-        </ul>
-    </nav>
 @endif
     <div class="mt-4 mb-4">
         <a href="{{ route('category-add') }}" class="btn btn-primary">

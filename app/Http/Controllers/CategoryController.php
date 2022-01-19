@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 
+use Illuminate\Pagination\Paginator;
+
 class CategoryController extends Controller
 {
 
@@ -20,7 +22,7 @@ class CategoryController extends Controller
     //投稿画面一覧
     public function category(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('categories.category', [
             'categories' => $categories,
         ]);
