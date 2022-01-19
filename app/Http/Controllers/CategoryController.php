@@ -22,9 +22,12 @@ class CategoryController extends Controller
     //投稿画面一覧
     public function category()
     {
+        $users = Auth::id();
+
         $categories = Category::paginate(5); //ページネーションの設定
         return view('categories.category', [
             'categories' => $categories,
+            'users' => $users,
         ]);
     }
 
@@ -32,9 +35,12 @@ class CategoryController extends Controller
 
     public function category_add(Request $request)
     {
+        $users = Auth::id();
+
         $categories = Category::all();
         return view('categories.category-add', [
             'categories' => $categories,
+            'users' => $users,
         ]);
     }
 
@@ -42,6 +48,8 @@ class CategoryController extends Controller
     
     public function add(Request $request)
     {
+        $users = Auth::id();
+
         $category = new Category;
         // $category->id = $request['id'];
         $category->name = $request['name'];

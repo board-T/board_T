@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('category');
 });
 
 Route::get('logout', array('uses' => 'LoginController@logout'));
@@ -28,7 +28,7 @@ Route::get('/category-add', [App\Http\Controllers\CategoryController::class, 'ca
 Route::post('/add', [App\Http\Controllers\CategoryController::class, 'add'])->name('add');
 Route::get('/threads/{id}', [App\Http\Controllers\ThreadController::class, 'index'])->name('threads');
 Route::post('/threads', [App\Http\Controllers\ThreadController::class,'create']);
-Route::get('/mypage/{id}', [App\Http\Controllers\UsersController::class, 'mypage'])->name('mypage/{id}');
+Route::get('/mypage/{id}', [App\Http\Controllers\UsersController::class, 'mypage'])->name('mypage');
 
 Route::get('/edit', [App\Http\Controllers\UsersController::class, 'edit'])->name('edit');
 Route::post('/edit', [App\Http\Controllers\UsersController::class, 'koushin'])->name('koushin');

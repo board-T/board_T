@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('content')
 @if (count($categories) > 0)
 
@@ -24,7 +24,7 @@
 @endif
     <div class="mt-4 mb-4">
         <a href="{{ route('category-add') }}" class="btn btn-primary">
-            新しい部屋の作成
+            新しい部屋を作成
         </a>
     </div>
 @endsection
