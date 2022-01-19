@@ -16,12 +16,12 @@ class BoardController extends Controller
      */
     public function index(Request $request)
     {
-        $users = Auth::id();
+        $authusers = Auth::id();
 
         $boards = Board::orderBy('created_at','asc')->get();
         return view('boards.index', [
             'boards' => $boards,
-            'users' => $users,
+            'authusers' => $authusers
 
         ]);
     }

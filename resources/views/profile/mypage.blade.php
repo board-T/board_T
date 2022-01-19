@@ -14,7 +14,9 @@
                 <div class="name">{{ $users->name }}</div>
                 <div class="profile">{{ $users->profile }}</div>
 
-            <a href="/edit?id={{ $users->id }}">
+            <!-- <a href="/edit?id={{ $users->id }}"> -->
+            <a href="{{ route('edit',['id' => $users->id ]) }}">
+
                 <img src="../../images/edit.png" alt="" >
             </a>
 

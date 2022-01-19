@@ -13,7 +13,7 @@ class ThreadController extends Controller
     // Indexページの表示
     public function index(Request $request)
     {
-        $users = Auth::id();
+        $authusers = Auth::id();
 
         $category = Category::find($request->id); 
         $comments = $category->comments()->get(); 
@@ -31,7 +31,7 @@ class ThreadController extends Controller
     // 投稿された内容を表示するページ
     public function create(Request $request)
     {
-        $users = Auth::id();
+        $$authusers = Auth::id();
 
         // バリデーションチェック
         $request->validate([

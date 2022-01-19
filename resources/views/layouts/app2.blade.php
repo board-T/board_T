@@ -67,7 +67,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('mypage',['id' => $users ]) }}">
+                                    <a class="dropdown-item" href="{{ route('mypage',['id' => $authusers ]) }}">
                                         マイページ
                                     </a>
 

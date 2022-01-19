@@ -21,18 +21,21 @@ class UsersController extends Controller
     public function mypage(Request $request)
     {
 
-        // $users = Auth::id();
+        $authusers = Auth::id();
         $users = User::where('id', $request["id"])
         ->first();
 
 
         return view('profile.mypage', [
             'users' => $users,
+            'authusers' => $authusers
         ]);
     }
 
     public function edit(Request $request)
     {
+        $authusers = Auth::id();
+
 
             $user = User::where('id', $request["id"])
                 ->first();
@@ -42,12 +45,17 @@ class UsersController extends Controller
         
         return view('profile.edit', [
             'user' => $user,
-            'users' => $users
+            'users' => $users,
+            'authusers' => $authusers
+
         ]);
     }
 
     public function koushin(Request $request)
     {
+
+        $authusers = Auth::id();
+
         $file = User::Where($request['image_name']);
         var_dump($request->image_name);
         
@@ -76,10 +84,7 @@ class UsersController extends Controller
         ->first();
 
 
-        return view('profile.mypage', [
-            'users' => $users,
-        ]);
-
+        return redirect('profile.mypage');
 
     }
 
