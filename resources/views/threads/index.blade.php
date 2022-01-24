@@ -26,49 +26,41 @@
 
 
 @section('content')
- <div class="table-responsive">
-     <table class="table table-hover">
-         <thead>
-         <tr>
-             <th>ID</th>
-             <th>作成日時</th>
-             <th>名前</th>
-             <th>メッセージ</th>
-         </tr>
-         </thead>
-         <tbody id="tbl">
-         @foreach ($comments as $comment)
-             <tr>
-                 <td>{{ $comment->id }}</td>
-                 <td>{{ $comment->created_at->format('Y.m.d') }}</td>
-                 <td>{{ $comment->user->name }}</td>
-                 <td>{!! nl2br(e(Str::limit($comment->comment, 1000))) !!}
-                  </td>
-             </tr>
-             <div class="row justify-content-center">
-             @if($comment->users()->where('user_id', Auth::id())->exists())
-                        <div class="col-md-3">
-                            <form action="{{ route('unlikes', $comment) }}" method="Post">
-                                @csrf
-                                <input type="submit" value="&#xf164;いいね取り消す" class="fas btn btn-danger">
-                            </form>
-                        </div>
-             @else
-                        <div class="col-md-3">
-                            <form action="{{ route('likes', $comment) }}" method="Post">
-                                @csrf
-                                <input type="submit" value="&#xf164;いいね" class="fas btn btn-success">
-                            </form>
-                        </div>
-                        <div class="row justify-content-center">
-                            <p>いいね数：{{ $comment->users()->count() }}</p>
-                        </div>
-             @endif
-         @endforeach
-         </tbody>
-     </table>
- </div>
-</div>
+ <div class="thread-frame">
+    <div class="thread-title">XXX</div>
+    @foreach ($comments as $comment)
+    <div class="thread-comment-box">
+        <div>
+            <span class="thread-comment-id">{{ $comment->id }}.</span>
+            <span class="thread-comment-name">{{ $comment->user->name }}</span>
+            <span class="thread-comment-date">{{ $comment->created_at->format('Y.m.d') }}</span>
+        </div>
+        <div class="thread-comment-body">
+        {!! nl2br(e(Str::limit($comment->comment, 1000))) !!}
+        </div>
+        <div>
+        <div class="thread-like-box">
+        @if($comment->users()->where('user_id', Auth::id())->exists())
+            <div class="col-md-3">
+                <form action="{{ route('unlikes', $comment) }}" method="Post">
+                    @csrf
+                    <input type="submit" value="&#xf164;いいね取り消す" class="fas btn btn-danger">
+                </form>
+            </div>
+        @else
+            <div class="col-md-3">
+                <form action="{{ route('likes', $comment) }}" method="Post">
+                    @csrf
+                    <input type="submit" value="&#xf164;いいね" class="fas btn btn-success">
+                </form>
+            </div>
+        @endif
+            <div class="thread-like-count">
+                        <p>いいね数：{{ $comment->users()->count() }}</p>
+                    </div>
+            </div>
+        </div>
+    @endforeach
     @if($errors->any())
     <h2>エラーメッセージ</h2>
     <ul>
@@ -77,27 +69,28 @@
         @endforeach
     </ul>
     @endif
-    <h2>コメント</h2>
-    <form action="/threads" method="POST">
-    <input type="hidden" name="category_id" value="{{ $category_id }}">
-        <br>
-        <tr>
-            <th>名前</th>
-            <td class="comment-name">
-                <input name="name" id="category-name" class="form-textarea"></textarea>
-            </td>
+    <div>
+        <form action="/threads" method="POST">
+        <input type="hidden" name="category_id" value="{{ $category_id }}">
             <br>
-            <th>コメント:</th>
-            <td class="comment-body">
-                <textarea name="comment" rows="4" cols="40"></textarea>
-            </td>
-        </tr>
-        {{ csrf_field() }}
-        <br>
-        <br><button class="btn btn-submit"> コメント </button>
-    </form>
-    <a href="/category"><button type="button" class="back-button">一覧画面へ戻る</button></a>
-
+            <tr>
+                <th>名前</th>
+                <td class="comment-name">
+                    <input name="name" id="category-name" class="form-textarea"></textarea>
+                </td>
+                <br>
+                <th>コメント:</th>
+                <td class="comment-body">
+                    <textarea name="comment" rows="4" cols="40"></textarea>
+                </td>
+            </tr>
+            {{ csrf_field() }}
+            <br>
+            <br><button class="btn btn-submit"> コメント </button>
+        </form>
+    </div>
+</div>
+<a href="/category"><button type="button" class="back-button">一覧画面へ戻る</button></a>
  @endsection
 
 
