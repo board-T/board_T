@@ -23,7 +23,7 @@ class ThreadController extends Controller
             'category_id'=>$request->id,
             'category'=>$category,
             'comments'=>$comments,
-            'users' => $users,
+            'authusers' => $authusers
 
         ]);
     }
@@ -46,7 +46,7 @@ class ThreadController extends Controller
             'user_id' => Auth::id(),
             'category_id' => $request->category_id,
             'comment' => $comment,
-            'users' => $users,
+            'authusers' => $authusers
 
         ]);
 
