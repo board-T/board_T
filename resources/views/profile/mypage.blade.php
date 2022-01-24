@@ -8,7 +8,7 @@
                 <div class="icon">
                     <!-- <img src="public/storage/images/tmp/{{ $users->image_name }}" alt=""> -->
                     <!-- <img src="{{ asset('storage/images/default_icon.png')}}" alt=""> -->
-                    <img src="{!! asset('storage/app/public/' .$users->image_name)!!}" alt="" width="100%">
+                    <img src="{!! asset('images/' .$users->image_name)!!}" alt="" width="100%">
 
                 </div>
                 <div class="name">{{ $users->name }}</div>

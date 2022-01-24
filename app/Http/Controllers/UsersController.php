@@ -59,18 +59,16 @@ class UsersController extends Controller
         $file = User::Where($request['image_name']);
         var_dump($request->image_name);
         
-        if ($file = $request->image_name) {
+            if(!empty($file = $request->image_name)) {
             $orgfilename = $file->getClientOriginalName();
            $ext = pathinfo($orgfilename, PATHINFO_EXTENSION);
            $ext2 = pathinfo($orgfilename, PATHINFO_FILENAME);
 
             $img_url = $file->storeAs('', $ext2.".".$ext,'public');
 
-        } elseif($file = "NULL") {
-            $fileName = "default.icon";
-
-        }
-
+            }else{
+                $img_url = "default-icon.jpg";
+            }
 
 
         //DB更新処理      
@@ -84,7 +82,7 @@ class UsersController extends Controller
         ->first();
 
 
-        return redirect('profile.mypage');
+        return redirect()->route('mypage',['id' => $authusers ]);
 
     }
 
