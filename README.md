@@ -1,6 +1,6 @@
 # BOARD-T
 
-### リンク**https://board-laravel.herokuapp.com/category**
+### リンク：**https://board-laravel.herokuapp.com/category**
 
 ## 概要
 データベース利用の簡易掲示板です。開発はMAMP（7.4.12）、MySQLはver5.7です。
