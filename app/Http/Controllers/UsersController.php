@@ -67,7 +67,7 @@ class UsersController extends Controller
             $img_url = $file->storeAs('', $ext2.".".$ext,'public');
 
             }else{
-                $img_url = "default-icon.jpg";
+                $img_url = "";
             }
 
 
