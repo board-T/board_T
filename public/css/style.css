@@ -280,5 +280,8 @@ label {
 }
 .thread-comment-box{
     border-bottom: 3px solid #CE8484;
-    margin-bottom: 10px;
+    padding: 10px 0;
+}
+.thread-comment-box:last-child {
+    border-bottom: none;
 }

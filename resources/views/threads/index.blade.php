@@ -14,7 +14,7 @@
         {!! nl2br(e(Str::limit($comment->comment, 1000))) !!}
         </div>
         <div class="thread-like-box">
-            <div class="col-md-3xx">
+            <div>
         @if($comment->users()->where('user_id', Auth::id())->exists())
                 <form action="{{ route('unlikes', $comment) }}" method="Post">
                     @csrf
