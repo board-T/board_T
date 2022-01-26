@@ -1,33 +1,8 @@
 @extends('layouts.app2')
  
 @section('content')
- 
-<!-- コメント一覧表示 -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-    </div>
-    <div class="panel-body">
-        <table class="table table-striped category-table">
- 
-            <!-- テーブルヘッダ -->
-            <thead>
-                <th>{{ $category->name }}</th>
-                <th>&nbsp;</th>
-            </thead>
-
-
- @section('title', 'board_larabel 投稿の一覧ページ')
- @section('keywords', 'キーワード1,キーワード2,キーワード3')
- @section('description', '投稿一覧ページの説明文')
- @section('pageCss')
- <link href="/css/bbs/style.css" rel="stylesheet">
- @endsection
-
-
-
-@section('content')
- <div class="thread-frame">
-    <div class="thread-title">XXX</div>
+<div class="thread-frame">
+    <div class="thread-title">{{ $category->name }}</div>
     @foreach ($comments as $comment)
     <div class="thread-comment-box">
         <div>
@@ -38,7 +13,6 @@
         <div class="thread-comment-body">
         {!! nl2br(e(Str::limit($comment->comment, 1000))) !!}
         </div>
-        <div>
         <div class="thread-like-box">
         @if($comment->users()->where('user_id', Auth::id())->exists())
             <div class="col-md-3">
@@ -56,11 +30,12 @@
             </div>
         @endif
             <div class="thread-like-count">
-                        <p>いいね数：{{ $comment->users()->count() }}</p>
-                    </div>
+                <p>いいね数：{{ $comment->users()->count() }}</p>
             </div>
         </div>
+    </div>
     @endforeach
+</div>
     @if($errors->any())
     <h2>エラーメッセージ</h2>
     <ul>
@@ -69,7 +44,7 @@
         @endforeach
     </ul>
     @endif
-    <div>
+    <div class="comment-form">
         <form action="/threads" method="POST">
         <input type="hidden" name="category_id" value="{{ $category_id }}">
             <br>
@@ -81,7 +56,7 @@
                 <br>
                 <th>コメント:</th>
                 <td class="comment-body">
-                    <textarea name="comment" rows="4" cols="40"></textarea>
+                    <textarea class="comment-text" name="comment" rows="2" cols="40"></textarea>
                 </td>
             </tr>
             {{ csrf_field() }}
@@ -90,8 +65,8 @@
         </form>
     </div>
 </div>
-<a href="/category"><button type="button" class="back-button">一覧画面へ戻る</button></a>
- @endsection
+<a href="/category"><button type="button" class="back-button">一覧画面へ戻る111</button></a>
+@endsection
 
 
  
