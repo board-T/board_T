@@ -31,7 +31,7 @@ class ThreadController extends Controller
     // 投稿された内容を表示するページ
     public function create(Request $request)
     {
-        $$authusers = Auth::id();
+        $authusers = Auth::id();
 
         // バリデーションチェック
         $request->validate([
