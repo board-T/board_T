@@ -14,23 +14,20 @@
         {!! nl2br(e(Str::limit($comment->comment, 1000))) !!}
         </div>
         <div class="thread-like-box">
+            <div class="col-md-3xx">
         @if($comment->users()->where('user_id', Auth::id())->exists())
-            <div class="col-md-3">
                 <form action="{{ route('unlikes', $comment) }}" method="Post">
                     @csrf
                     <input type="submit" value="&#xf164;いいね取り消す" class="fas btn btn-danger">
+                    <span class="thread-like-count">いいね数：{{ $comment->users()->count() }}</span>
                 </form>
-            </div>
         @else
-            <div class="col-md-3">
                 <form action="{{ route('likes', $comment) }}" method="Post">
                     @csrf
                     <input type="submit" value="&#xf164;いいね" class="fas btn btn-success">
+                    <span class="thread-like-count">いいね数：{{ $comment->users()->count() }}</span>
                 </form>
-            </div>
         @endif
-            <div class="thread-like-count">
-                <p>いいね数：{{ $comment->users()->count() }}</p>
             </div>
         </div>
     </div>
