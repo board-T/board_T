@@ -250,3 +250,31 @@ label {
     background: none;
     left: 15px;
 }
+
+.thread-frame {
+    width: 500px;
+    border: 3px solid #CE8484;
+    border-radius: 10px;
+    padding: 0;
+    margin: 15px auto;
+    color: #3B0B0B;
+}
+
+.thread-title {
+    background-color: #CE8484;
+    margin: 0;
+    color: #ffffff;
+}
+
+.comment-form {
+    width: 500px;
+    border: 3px solid #CE8484;
+    border-radius: 10px;
+    padding: 0;
+    margin: 15px auto;
+    color: #3B0B0B;
+}
+
+.comment-text {
+    height: 80px;
+}
