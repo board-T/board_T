@@ -278,3 +278,7 @@ label {
 .comment-text {
     height: 80px;
 }
+.thread-comment-box{
+    border-bottom: 3px solid #CE8484;
+    margin-bottom: 10px;
+}
